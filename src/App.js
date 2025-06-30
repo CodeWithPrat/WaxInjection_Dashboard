@@ -46,6 +46,7 @@ const Home = () => {
     { icon: <Settings className="w-5 h-5" />, label: "Control", value: "PLC Based" }
   ];
 
+  
   return (
     <main className="flex-1 relative z-10 px-6 py-8 lg:py-12 lg:pl-0 pl-20">
       <div className="max-w-6xl mx-auto">
