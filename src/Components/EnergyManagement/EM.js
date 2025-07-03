@@ -195,16 +195,16 @@ const EnergyManagementDashboard = () => {
                                 <Gauge className="text-green-500 w-8 h-8" />
                                 <div className="text-right">
                                     <div className="text-3xl font-bold text-green-400">
-                                        {getValue('pressure_output_from_plc').toFixed(0)}
+                                        {getValue('import_kWh').toFixed(0)}
                                     </div>
-                                    <div className="text-green-300 text-sm">bar</div>
+                                    <div className="text-green-300 text-sm">kWh</div>
                                 </div>
                             </div>
-                            <h3 className="text-lg font-semibold mb-2">Injection Pressure</h3>
+                            <h3 className="text-lg font-semibold mb-2">Total Energy</h3>
                             <div className="w-full bg-gray-700/50 rounded-full h-2">
                                 <div
                                     className="bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full transition-all duration-700 animate-pulse"
-                                    style={{ width: `${Math.min((getValue('pressure_output_from_plc') / 1000) * 100, 100)}%` }}
+                                    style={{ width: `${Math.min((getValue('import_kWh') / 1000) * 100, 100)}%` }}
                                 ></div>
                             </div>
                         </div>
@@ -523,95 +523,6 @@ const EnergyManagementDashboard = () => {
                             </div>
                             <h3 className="font-semibold text-yellow-400">Total Energy</h3>
                             <p className="text-gray-400 text-sm mt-1">{getValue('import_kWh').toFixed(1)} kWh</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Pressure Visualization */}
-                <div className="mb-8">
-                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">
-                        Injection Pressure Analysis
-                    </h2>
-
-                    <div className="bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl p-6 border border-green-500/20 backdrop-blur-sm">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                            <div className="w-full md:w-1/2">
-                                <GaugeComponent
-                                    value={getValue('pressure_output_from_plc')}
-                                    type="radial"
-                                    minValue={0}
-                                    maxValue={1000}
-                                    labels={{
-                                        tickLabels: {
-                                            type: "inner",
-                                            ticks: [
-                                                { value: 200 },
-                                                { value: 400 },
-                                                { value: 600 },
-                                                { value: 800 },
-                                                { value: 1000 }
-                                            ]
-                                        },
-                                        valueLabel: {
-                                            formatTextValue: value => value.toFixed(0) + ' bar',
-                                            style: { fontSize: '24px', fill: '#22c55e', fontWeight: 'bold' }
-                                        }
-                                    }}
-                                    arc={{
-                                        colorArray: [
-                                            '#14b8a6', // teal-500 (calm, cool)
-                                            '#06b6d4', // cyan-500 (cool, modern)
-                                            '#0ea5e9', // sky-500 (calm blue)
-                                            '#6366f1', // indigo-500 (neutral cool)
-                                            '#8b5cf6', // violet-500 (transition to warm)
-                                            '#ec4899', // pink-500 (warm vibrant)
-                                            '#eab308', // yellow-500 (caution/warning)
-                                            '#f97316', // orange-500 (warning/high activity)
-                                            '#22c55e', // green-500 (safe/okay state)
-                                            '#ef4444'  // red-500 (danger/error)
-                                        ]
-
-                                        ,
-                                        subArcs: [{ limit: 200 }, { limit: 400 }, { limit: 600 }, { limit: 800 }, { limit: 1000 }],
-                                        padding: 0.02,
-                                        width: 0.3
-                                    }}
-                                    pointer={{
-                                        elastic: true,
-                                        animationDelay: 0,
-                                        color: '#22c55e'
-                                    }}
-                                />
-                            </div>
-
-                            <div className="w-full md:w-1/2">
-                                <h3 className="text-xl font-semibold mb-4 text-green-400">Pressure Trends</h3>
-                                <p className="text-gray-300 mb-4">
-                                    Current injection pressure: <span className="font-bold text-green-300">{getValue('pressure_output_from_plc').toFixed(0)} bar</span>
-                                </p>
-                                <div className="relative h-40 w-full bg-gray-800/50 rounded-lg overflow-hidden">
-                                    {/* Simulated pressure trend visualization */}
-                                    <div className="absolute inset-0 flex items-end">
-                                        {[...Array(20)].map((_, i) => {
-                                            const base = getValue('pressure_output_from_plc') || 0;
-                                            const heightPercent = Math.min((base / 1000) * 100 * (0.8 + Math.random() * 0.4), 100);
-                                            const opacity = 0.7 + (i % 3) * 0.1;
-
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    className="flex-1 bg-gradient-to-t from-green-500 to-green-700 transition-all duration-500 mx-[1px]"
-                                                    style={{
-                                                        height: `${heightPercent}%`,
-                                                        opacity: opacity
-                                                    }}
-                                                ></div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                 </div>
