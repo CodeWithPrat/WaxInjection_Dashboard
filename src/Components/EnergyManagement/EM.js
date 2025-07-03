@@ -187,7 +187,7 @@ const EnergyManagementDashboard = () => {
                         </div>
                     </div>
 
-                    {/* Injection Pressure Card */}
+                    {/* Energy Card */}
                     <div className="group relative bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl p-6 border border-green-500/20 backdrop-blur-sm hover:border-green-500/40 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-green-500/20">
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div className="relative z-10">
