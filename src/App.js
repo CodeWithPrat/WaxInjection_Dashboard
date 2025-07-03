@@ -9,6 +9,7 @@ import wax5 from "../src/images/wax5.png"
 
 import cmtilogo from "../src/images/Logo/CMTILogo.png"
 import MHILogo from "../src/images/Logo/MHI3.png"
+import PMPLogo from "../src/images/Logo/PMPLogo.png"
 
 import WaxInjectorEnergyDashboard from './Components/EnergyManagement/EM';
 import Temperature from './Components/Temperature/Temperature';
@@ -140,11 +141,6 @@ const Home = () => {
                       </div>
                     ))}
                   </div>
-
-                  <div className="bg-gradient-to-r from-green-500/20 to-teal-500/20 backdrop-blur-lg rounded-full px-3 lg:px-4 py-2 border border-green-500/30">
-                    <span className="text-green-400 font-bold text-base lg:text-lg">98.7%</span>
-                    <span className="text-gray-400 text-xs lg:text-sm ml-1">Efficiency</span>
-                  </div>
                 </div>
               </div>
 
@@ -164,44 +160,6 @@ const Home = () => {
     </main>
   );
 };
-
-// Temperature Component (Placeholder)
-// const Temperature = () => {
-//   return (
-//     <main className="flex-1 relative z-10 px-6 py-8 lg:py-12 lg:pl-0 pl-20">
-//       <div className="max-w-6xl mx-auto">
-//         <div className="bg-gradient-to-br from-black/40 to-gray-900/40 backdrop-blur-lg rounded-3xl p-8 border border-green-500/20">
-//           <div className="flex items-center space-x-4 mb-6">
-//             <div className="bg-gradient-to-r from-red-500 to-orange-500 p-4 rounded-xl">
-//               <Thermometer className="w-8 h-8 text-white" />
-//             </div>
-//             <h1 className="text-3xl font-bold text-white">Temperature Management</h1>
-//           </div>
-//           <p className="text-gray-300 text-lg">Temperature monitoring and control dashboard coming soon...</p>
-//         </div>
-//       </div>
-//     </main>
-//   );
-// };
-
-// Cylinder Status Component (Placeholder)
-// const CylinderStatus = () => {
-//   return (
-//     <main className="flex-1 relative z-10 px-6 py-8 lg:py-12 lg:pl-0 pl-20">
-//       <div className="max-w-6xl mx-auto">
-//         <div className="bg-gradient-to-br from-black/40 to-gray-900/40 backdrop-blur-lg rounded-3xl p-8 border border-green-500/20">
-//           <div className="flex items-center space-x-4 mb-6">
-//             <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-xl">
-//               <Settings className="w-8 h-8 text-white" />
-//             </div>
-//             <h1 className="text-3xl font-bold text-white">Cylinder Status</h1>
-//           </div>
-//           <p className="text-gray-300 text-lg">Cylinder status monitoring dashboard coming soon...</p>
-//         </div>
-//       </div>
-//     </main>
-//   );
-// };
 
 // Layout Component
 const Layout = ({ children }) => {
@@ -293,18 +251,54 @@ const Layout = ({ children }) => {
             </div>
           </nav>
 
-          {/* Sidebar Footer */}
-          {/* <div className="p-6 border-t border-green-500/20">
-            <div className="bg-gradient-to-r from-black/40 to-gray-900/40 backdrop-blur-lg rounded-2xl p-4 border border-green-500/20">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-400 text-sm">System Efficiency</span>
-                <span className="text-green-400 font-bold">98.7%</span>
-              </div>
-              <div className="w-full bg-gray-700 rounded-full h-2">
-                <div className="bg-gradient-to-r from-green-500 to-teal-500 h-2 rounded-full w-[98.7%] animate-pulse"></div>
+          {/* System Status */}
+          <div className="p-6 border-t border-green-500/20 space-y-4">
+            {/* Mode Indicator */}
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400 text-sm font-medium">Mode</span>
+              <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-green-400 text-sm font-medium">Auto</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
+                  <span className="text-gray-500 text-sm">Manual</span>
+                </div>
               </div>
             </div>
-          </div> */}
+
+            {/* Cycle Time */}
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400 text-sm font-medium">Cycle Time</span>
+              <div className="bg-gradient-to-r from-green-500/20 to-teal-500/20 backdrop-blur-lg rounded-lg px-3 py-1 border border-green-500/30">
+                <span className="text-green-400 font-mono text-sm">02:34:17</span>
+              </div>
+            </div>
+
+            {/* Job Count */}
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400 text-sm font-medium">Job Count</span>
+              <div className="bg-gradient-to-r from-green-500/20 to-teal-500/20 backdrop-blur-lg rounded-lg px-3 py-1 border border-green-500/30">
+                <span className="text-green-400 font-bold text-sm">1,247</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="p-6 border-t border-green-500/20">
+            <div className="text-center">
+              <h3 className="text-gray-400 text-xs font-medium mb-3 uppercase tracking-wide">Industry Partner</h3>
+              <p className="text-green-400 text-sm font-medium mb-4">Powered by</p>
+              <div className="flex justify-center">
+                <img
+                  src={PMPLogo}
+                  alt="Industry Partner"
+                  className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
