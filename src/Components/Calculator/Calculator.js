@@ -6,7 +6,6 @@ export default function PowerCalculator() {
   const [scrapProducts, setScrapProducts] = useState('');
   const [emergencyBreakTime, setEmergencyBreakTime] = useState('');
   const [results, setResults] = useState(null);
-  const [totalProduct, setTotalProduct] = useState('');
 
   // Constants
   const TOTAL_POWER_TIME = 480; // minutes
@@ -17,10 +16,9 @@ export default function PowerCalculator() {
     const goodCount = parseInt(goodProducts) || 0;
     const scrapCount = parseInt(scrapProducts) || 0;
     const emergencyBreak = parseInt(emergencyBreakTime) || 0;
-    const totalProduct = parseInt(totalProducts) || 0;
 
     // Calculate total products
-    const totalProducts = totalProduct;
+    const totalProducts = goodCount + scrapCount;
     
     // Calculate scrap percentage
     const scrapPercentage = totalProducts > 0 ? (scrapCount / totalProducts) * 100 : 0;
@@ -98,11 +96,11 @@ export default function PowerCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div>
               <label className="block text-sm font-medium text-gray-200 mb-2">
-                Total Products
+                Good Products
               </label>
               <input
                 type="number"
-                value={totalProduct}
+                value={goodProducts}
                 onChange={(e) => setGoodProducts(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-lg text-white bg-black focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter number of good products"
@@ -110,7 +108,19 @@ export default function PowerCalculator() {
               />
             </div>
 
-            
+            <div>
+              <label className="block text-sm font-medium text-gray-200 mb-2">
+                Scrap Products
+              </label>
+              <input
+                type="number"
+                value={scrapProducts}
+                onChange={(e) => setScrapProducts(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg text-white bg-black focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                placeholder="Enter number of scrap products"
+                min="0"
+              />
+            </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-200 mb-2">
