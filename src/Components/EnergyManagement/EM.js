@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Zap, Power, Gauge, Activity, Wifi, WifiOff, ChevronDown, ChevronUp } from 'lucide-react';
 import GaugeComponent from 'react-gauge-component';
+import PowerCalculator from '../Calculator/Calculator';
 
 const EnergyManagementDashboard = () => {
     const [data, setData] = useState(null);
@@ -526,6 +527,8 @@ const EnergyManagementDashboard = () => {
                             <p className="text-gray-400 text-sm mt-1">{getValue('import_kWh').toFixed(1)} kWh</p>
                         </div>
                     </div>
+                                            <PowerCalculator/>
+
                 </div>
             </div>
 
